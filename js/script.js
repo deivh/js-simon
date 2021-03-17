@@ -25,8 +25,10 @@ function guess(values){
     var points = 0;
     for (var i=0; i<values.length; i++) {
         var value = parseInt(prompt("Inserisci un numero e prova ad indovinare!"))
-        userValues.push(value);
-        if (values.includes(value)) {
+        if (userValues.includes(value)) {
+            console.log("Questo numero lo avevi già inserit*! Smemorat*, hai sprecato un tentativo!")
+        }
+        else if (values.includes(value)) {
             console.log("Complimenti hai indovinato " , value , " !")
             points++;
         } else {
@@ -35,7 +37,9 @@ function guess(values){
                 console.log("Riprova, ti sono rimasti ", tries ," tentativi!")
             }
         }
+        userValues.push(value);
     }
+    
     console.log("Complimenti hai indovinato ", points , " volte!");
 
 }
@@ -44,7 +48,7 @@ function init() {
     // values = getRandomArray100(5);
     console.log(values);
     alert(values);
-    setTimeout(guess, 30000, values);
+    setTimeout(guess, 3000, values);
 }
 values = getRandomArray100(5);
 init();
